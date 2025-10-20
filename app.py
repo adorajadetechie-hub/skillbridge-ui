@@ -5,6 +5,29 @@ from PyPDF2 import PdfReader
 from fpdf import FPDF
 from io import BytesIO
 
+import streamlit as st
+
+# ---------------- Hide default stream lit options ----------------
+
+
+# Must be the first Streamlit call
+st.set_page_config(
+    page_title="SkillBridge — AI Career Gap Analyzer",
+    page_icon="💼",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
+# Hide Streamlit's default menu, footer, and deploy button
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}     /* Hides hamburger menu */
+    footer {visibility: hidden;}        /* Hides footer */
+    header {visibility: hidden;}        /* Hides deploy menu on top-right */
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # ---------------- AWS CONFIG ----------------
 S3_BUCKET = "skillbridge-assets"
 TEMPLATE_PATH = "templates/SkillBridge_Template.pdf"
